@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon JavaScript API Demo</title>
+    <style>
+      /* CSS will go here */
+    </style>
+  </head>
+
+  <body>
+    <h2>Product Search</h2>
+    <input autofocus id="searchTerm" value="laptop" />
+    <button onclick="search()">Search Amazon</button>
+    <ul id="products" class="grid"></ul>
+
+    <script>
+      const RAPID_API_KEY = "";
+      async function showReviews(reviewsContainer, asin) {
+        reviewsContainer.innerHTML = "Loading...";
+
+        const { reviews } = await getReviews(asin);
+        reviewsContainer.innerHTML = `
+    <h3>Reviews</h3>
+    <ul class="grid">
+    ${reviews
+      .map(
+        (review) => `
+      <li class="grid small table">
+        <span><b>Rating:</b> ${review.rating} / 5</span>
+        <span><b>Title:</b> ${review.title}</span>
+        <span><b>Review:</b>
+          <span>
+            ${review.review.slice(0, 100)}...
+            <a href='#' style="color:inherit" onclick='
+              var full = this.nextElementSibling;
+              this.parentElement.replaceWith(full);
+              full.hidden = false;
+              return false;
+            '>
+              Read more
+            </a>
+            <span hidden>${review.review}</span>
+          </span>
+        </span>
+      </li>
+    `
+      )
+      .join("")}
+    </ul >
+  `;
+      }
+    </script>
+  </body>
+</html>
