@@ -3,54 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon JavaScript API Demo</title>
-    <style>
-      /* CSS will go here */
-    </style>
+    <title>Football live</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <h2>Product Search</h2>
-    <input autofocus id="searchTerm" value="laptop" />
-    <button onclick="search()">Search Amazon</button>
-    <ul id="products" class="grid"></ul>
+    <div class="HeadMargin">
+      <h1 class="Heading">Football Live</h1>
+      <h4 class="Heading">Get latest updates of all the Live matches</h4>
+    </div>
+    <div class="container">
+      <h1>ScoreBoard</h1>
+      <!-- match updates-->
 
-    <script>
-      const RAPID_API_KEY = "";
-      async function showReviews(reviewsContainer, asin) {
-        reviewsContainer.innerHTML = "Loading...";
+      <div class="title-box">
+        <!-- time, team names-->
+        <p>Home Team</p>
+        <p id="elapsed">45'</p>
+        <p>Away Team</p>
+      </div>
 
-        const { reviews } = await getReviews(asin);
-        reviewsContainer.innerHTML = `
-    <h3>Reviews</h3>
-    <ul class="grid">
-    ${reviews
-      .map(
-        (review) => `
-      <li class="grid small table">
-        <span><b>Rating:</b> ${review.rating} / 5</span>
-        <span><b>Title:</b> ${review.title}</span>
-        <span><b>Review:</b>
-          <span>
-            ${review.review.slice(0, 100)}...
-            <a href='#' style="color:inherit" onclick='
-              var full = this.nextElementSibling;
-              this.parentElement.replaceWith(full);
-              full.hidden = false;
-              return false;
-            '>
-              Read more
-            </a>
-            <span hidden>${review.review}</span>
-          </span>
-        </span>
-      </li>
-    `
-      )
-      .join("")}
-    </ul >
-  `;
-      }
-    </script>
+      <div class="title-box">
+        <!-- home vs away team-->
+        <div class="team">
+          <img id="homeLogo" />
+          <p id="jomeName">Team name</p>
+        </div>
+        <p id="goals">2-1</p>
+        <div class="team">
+          <img id="awayLogo" />
+          <p id="awayName">Team name</p>
+        </div>
+      </div>
+
+      <hr />
+      <div id="matchTable" class="matches-table"></div>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>
