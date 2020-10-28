@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clever amazon</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- title bar -->
+
+    <div class="HeadMargin">
+      <h1 class="headFont Heading">Clever Amazon</h1>
+      <h2 class="Heading">
+        Get rapid, easy to use, Reviews, Ratings and Price for the product of
+        your choice.<br />
+        Products are from Amazon.
+      </h2>
+      <h3 class="Heading">Hassle free experience + No ads</h3>
+    </div>
+
+    <!-- search bar -->
+    <h2 class="srchTitle">Search Product</h2>
+    <input
+      autofocus
+      id="searchTerm"
+      class="srchValue"
+      placeholder="Enter product name, Eg: phone"
+    />
+
+    <button class="srch-btn" onclick="search()">Search Amazon</button>
+    <ul id="products" class="grid"></ul>
+    <span></span>
+
+    <script src="myscripts.js"></script>
+  </body>
+</html>
